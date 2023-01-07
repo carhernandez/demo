@@ -15,7 +15,6 @@ public class Productos {
     Integer marca;
     @Column(name = "id_color",nullable = false )
     String idColor;
-
     @Column(name = "id_genero",nullable = false )
     String idGenero;
     @Column(name = "id_talla",nullable = false)
@@ -24,8 +23,16 @@ public class Productos {
     String valor;
     @Column(name = "cantidad")
     String cantidad;
+    @ManyToOne
+    private Usuarios usuarios;
 
+    public Usuarios getUsuarios() {
+        return usuarios;
+    }
 
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }
 
 
 }

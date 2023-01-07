@@ -12,7 +12,7 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-@GetMapping("")
+    @GetMapping("")
     public String registro(){
         return "registro";
     }

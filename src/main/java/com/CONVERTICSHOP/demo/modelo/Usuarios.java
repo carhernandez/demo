@@ -2,9 +2,11 @@ package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuarios {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     String idUsuario;
@@ -18,11 +20,13 @@ public class Usuario {
     String apellidos;
 @Column(name = "contrasena")
     String contrasena;
+@OneToMany(mappedBy = "usuarios")
+    private List<Productos> productosList;
 
-    public Usuario() {
+    public Usuarios() {
     }
 
-    public Usuario(String correoElectronico, Integer nDocumento, String nombres, String apellidos, String contrasena) {
+    public Usuarios(String correoElectronico, Integer nDocumento, String nombres, String apellidos, String contrasena) {
         this.correoElectronico = correoElectronico;
         this.nDocumento = nDocumento;
         this.nombres = nombres;
@@ -78,6 +82,13 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
+    public List<Productos> getProductosList() {
+        return productosList;
+    }
+
+    public void setProductosList(List<Productos> productosList) {
+        this.productosList = productosList;
+    }
 
     @Override
     public String toString() {
