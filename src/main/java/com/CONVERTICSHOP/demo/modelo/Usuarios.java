@@ -1,44 +1,51 @@
 package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
 @Table(name = "usuario")
 public class Usuarios {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-    String idUsuario;
-@Column(name = "correo_electronico", nullable = false)
-    String correoElectronico;
-@Column(name = "n_documento", nullable = false)
-    Integer nDocumento;
-@Column(name = "nombres",nullable = false )
-    String nombres;
-@Column(name = "apellidos",nullable = false)
-    String apellidos;
-@Column(name = "contrasena")
-    String contrasena;
-@OneToMany(mappedBy = "usuarios")
-    private List<Productos> productosList;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idUsuario;
+
+    @Column (name = "correo_electronico")
+    private String correoElectronico;
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_documento")
+    TipoDocumento tipoDocumento;
+    @Column (name = "n_documento")
+    private Integer nDocumento;
+    @Column(name = "nombres")
+    private String nombres;
+    @Column (name = "apellidos")
+    private String apellidos;
+    @Column (name = "contrasena")
+    private String contrasena;
+    @OneToMany (mappedBy ="usuarios")
+    private List<Productos> productos;
 
     public Usuarios() {
     }
 
-    public Usuarios(String correoElectronico, Integer nDocumento, String nombres, String apellidos, String contrasena) {
+    public Usuarios(String correoElectronico, TipoDocumento tipoDocumento, Integer nDocumento,
+                    String nombres, String apellidos, String contrasena, List<Productos> productos) {
         this.correoElectronico = correoElectronico;
+        this.tipoDocumento = tipoDocumento;
         this.nDocumento = nDocumento;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.contrasena = contrasena;
+        this.productos = productos;
     }
 
-    public String getIdUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(String idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -48,6 +55,14 @@ public class Usuarios {
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
+    }
+
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     public Integer getnDocumento() {
@@ -82,23 +97,11 @@ public class Usuarios {
         this.contrasena = contrasena;
     }
 
-    public List<Productos> getProductosList() {
-        return productosList;
+    public List<Productos> getProductos() {
+        return productos;
     }
 
-    public void setProductosList(List<Productos> productosList) {
-        this.productosList = productosList;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "idUsuario='" + idUsuario + '\'' +
-                ", correoElectronico='" + correoElectronico + '\'' +
-                ", nDocumento=" + nDocumento +
-                ", nombres='" + nombres + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", contrasena='" + contrasena + '\'' +
-                '}';
+    public void setProductos(List<Productos> productos) {
+        this.productos = productos;
     }
 }

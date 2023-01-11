@@ -2,6 +2,8 @@ package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tipo_documento")
 public class TipoDocumento {
@@ -9,14 +11,17 @@ public class TipoDocumento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Integer idTipoDocumento;
-    @Column
+    @Column (name = "documento")
     private String documento;
+    @OneToMany (mappedBy = "tipoDocumento", fetch = FetchType.LAZY)
+    private List<Usuarios> usuarios;
 
     public TipoDocumento() {
     }
 
-    public TipoDocumento(String documento) {
+    public TipoDocumento(String documento, List<Usuarios> usuarios) {
         this.documento = documento;
+        this.usuarios = usuarios;
     }
 
     public Integer getIdTipoDocumento() {
@@ -35,11 +40,13 @@ public class TipoDocumento {
         this.documento = documento;
     }
 
-    @Override
-    public String toString() {
-        return "TipoDocumento{" +
-                "idTipoDocumento=" + idTipoDocumento +
-                ", documento='" + documento + '\'' +
-                '}';
+    public List<Usuarios> getUsuarios() {
+        return usuarios;
     }
+
+    public void setUsuarios(List<Usuarios> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+
 }

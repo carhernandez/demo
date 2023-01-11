@@ -2,6 +2,8 @@ package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "genero")
 
@@ -10,8 +12,11 @@ public class Genero {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer idGenero;
 
+
     @Column (name = "genero")
     private String genero;
+    @OneToMany(mappedBy = "idGenero")
+    private List<Productos> productos;
 
     public Genero() {
     }

@@ -2,6 +2,8 @@ package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "talla")
 public class Talla {
@@ -12,6 +14,9 @@ public class Talla {
 
     @Column (name = "talla")
     private String talla;
+
+    @OneToMany(mappedBy = "idTalla", fetch = FetchType.LAZY)
+    private List<Productos> productos;
 
     public Talla() {
     }
