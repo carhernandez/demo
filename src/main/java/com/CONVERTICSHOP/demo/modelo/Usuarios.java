@@ -8,7 +8,7 @@ import java.util.List;
 public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Integer idUsuario;
 
     @Column (name = "correo_electronico")
     private String correoElectronico;
@@ -41,11 +41,11 @@ public class Usuarios {
         this.productos = productos;
     }
 
-    public Long getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Long idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
