@@ -3,6 +3,7 @@ package com.CONVERTICSHOP.demo.modelo;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tipo_documento")
@@ -14,14 +15,14 @@ public class TipoDocumento {
     @Column (name = "documento")
     private String documento;
     @OneToMany (mappedBy = "tipoDocumento", fetch = FetchType.LAZY)
-    private List<Usuarios> usuarios;
+    private Set<Usuarios> usuarios;
 
     public TipoDocumento() {
     }
 
-    public TipoDocumento(String documento, List<Usuarios> usuarios) {
+    public TipoDocumento(String documento, Set<Usuarios> usuarios) {
         this.documento = documento;
-        this.usuarios = usuarios;
+        this.usuarios= usuarios;
     }
 
     public Integer getIdTipoDocumento() {
@@ -40,11 +41,11 @@ public class TipoDocumento {
         this.documento = documento;
     }
 
-    public List<Usuarios> getUsuarios() {
+    public Set<Usuarios> getUsuarios() {
         return usuarios;
     }
 
-    public void setUsuarios(List<Usuarios> usuarios) {
+    public void setUsuarios(Set<Usuarios> usuarios) {
         this.usuarios = usuarios;
     }
 

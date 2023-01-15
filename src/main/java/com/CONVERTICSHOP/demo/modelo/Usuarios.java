@@ -1,6 +1,7 @@
 package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
@@ -10,21 +11,21 @@ public class Usuarios {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    @Column (name = "correo_electronico")
+    @Column(name = "correo_electronico")
     private String correoElectronico;
 
     @ManyToOne
-    @JoinColumn(name = "tipo_documento")
+    @JoinColumn(name = "tipo_documento" )
     TipoDocumento tipoDocumento;
-    @Column (name = "n_documento")
+    @Column(name = "n_documento")
     private Integer nDocumento;
     @Column(name = "nombres")
     private String nombres;
-    @Column (name = "apellidos")
+    @Column(name = "apellidos")
     private String apellidos;
-    @Column (name = "contrasena")
+    @Column(name = "contrasena")
     private String contrasena;
-    @OneToMany (mappedBy ="usuarios")
+    @OneToMany(mappedBy = "usuarios", fetch = FetchType.LAZY)
     private List<Productos> productos;
 
     public Usuarios() {
