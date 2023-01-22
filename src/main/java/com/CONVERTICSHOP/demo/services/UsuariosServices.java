@@ -18,20 +18,6 @@ public class UsuariosServices {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuarios crearUsuario() {
-
-        Usuarios usuarios = new Usuarios();
-
-        usuarios.setCorreoElectronico("12345@gmail.com");
-        //usuarios.setTipoDocumento();
-        usuarios.setnDocumento(12345);
-        usuarios.setNombres("carlos");
-        usuarios.setApellidos("hernandez");
-        usuarios.setContrasena("1234567");
-
-        usuarioRepository.save(usuarios);
-        return usuarios;
-    }
 
     /*public List<Usuarios> getUsuario() {
         return usuarioRepository.findAll();
@@ -55,8 +41,7 @@ public class UsuariosServices {
     Usuarios usuarios = new Usuarios();
 
     // obtener todos los usuarios
-
-    public ResponseEntity<List<Usuarios>> getAllUsuarios() {
+        public ResponseEntity<List<Usuarios>> getAllUsuarios() {
         return new ResponseEntity<>(usuarioRepository.findAll(), HttpStatus.OK);
     }
 
@@ -69,7 +54,6 @@ public class UsuariosServices {
     Usuarios usuario = new Usuarios();
 
     // obtener usuario por id rest api
-
     public ResponseEntity<Usuarios> getUsuariosById(Integer idUsuarios) {
         Usuarios usuarios = usuarioRepository.findByIdUsuario(idUsuarios)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" +
@@ -78,8 +62,6 @@ public class UsuariosServices {
     }
 
     // actualizar usuarios rest api
-
-
     public ResponseEntity<Usuarios> updateUsuarios(int idUsuarios, Usuarios usuarios1) {
         Usuarios usuarios = usuarioRepository.findByIdUsuario(idUsuarios)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" + idUsuarios));
@@ -97,7 +79,6 @@ public class UsuariosServices {
     }
 
     // borrar usuario rest api
-
     public ResponseEntity<Map<String, Boolean>> deleteUsuario(int idUsuarios) {
         Usuarios usuarios = usuarioRepository.findByIdUsuario(idUsuarios)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" + idUsuarios));

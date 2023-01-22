@@ -25,8 +25,6 @@ public class Usuarios {
     private String apellidos;
     @Column(name = "contrasena")
     private String contrasena;
-    @OneToMany(mappedBy = "usuarios", fetch = FetchType.LAZY)
-    private List<Productos> productos;
 
     public Usuarios() {
     }
@@ -39,7 +37,7 @@ public class Usuarios {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.contrasena = contrasena;
-        this.productos = productos;
+
     }
 
     public Integer getIdUsuario() {
@@ -98,11 +96,16 @@ public class Usuarios {
         this.contrasena = contrasena;
     }
 
-    public List<Productos> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Productos> productos) {
-        this.productos = productos;
+    @Override
+    public String toString() {
+        return "Usuarios{" +
+                "idUsuario=" + idUsuario +
+                ", correoElectronico='" + correoElectronico + '\'' +
+                ", tipoDocumento=" + tipoDocumento +
+                ", nDocumento=" + nDocumento +
+                ", nombres='" + nombres + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", contrasena='" + contrasena + '\'' +
+                '}';
     }
 }

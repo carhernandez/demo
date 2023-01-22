@@ -14,14 +14,14 @@ import java.util.Map;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-//    @GetMapping("")
-//    public String registro() {
-//        usuariosServices.crearUsuario();
-//
-//        return "registro";
-//    }
+    @GetMapping("")
+    public String registro() {
+        
 
-    @DeleteMapping("/{idUsuarios}")
+        return "registro";
+    }
+
+    @DeleteMapping("/delete/{idUsuarios}")
     public ResponseEntity<Map<String, Boolean>> deleteUsuario(@PathVariable Integer idUsuarios) {
         return usuariosServices.deleteUsuario(idUsuarios);
     }
@@ -46,7 +46,8 @@ public class UsuarioController {
         return usuariosServices.updateUsuarios(idUsuarios, usuarios);
     }
 
-    @GetMapping("/searchidpass")
+    @GetMapping("/" +
+            "")
     public ResponseEntity<List<Usuarios>> getUsuarioAndPassword(@RequestParam int idUsuarios,
                                                                 @RequestParam String contrasena) {
         return usuariosServices.getIdUsuarioAndPassword(idUsuarios, contrasena);
