@@ -21,9 +21,9 @@ public class Productos {
     private Talla idTalla;
     private String valor;
     private String cantidad;
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "usuario_id_usuario")
-    private Usuarios usuarios;
+    private Usuarios usuarios;*/
 
     public Productos() {
     }
@@ -37,7 +37,7 @@ public class Productos {
         this.idTalla = idTalla;
         this.valor = valor;
         this.cantidad = cantidad;
-        this.usuarios = usuarios;
+        //this.usuarios = usuarios;
     }
 
     public Long getIdProducto() {
@@ -104,13 +104,13 @@ public class Productos {
         this.cantidad = cantidad;
     }
 
-    public Usuarios getUsuarios() {
+    /*public Usuarios getUsuarios() {
         return usuarios;
     }
 
     public void setUsuarios(Usuarios usuarios) {
         this.usuarios = usuarios;
-    }
+    }*/
 }
 
 

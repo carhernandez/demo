@@ -3,6 +3,7 @@ package com.CONVERTICSHOP.demo.services;
 import com.CONVERTICSHOP.demo.modelo.Productos;
 import com.CONVERTICSHOP.demo.modelo.Usuarios;
 import com.CONVERTICSHOP.demo.repository.ProductosRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import java.util.Map;
 
 @Service
 public class ProductosServices {
-
+    @Autowired
     private ProductosRepository productosRepository;
 
     //obtener todos los usuarios
@@ -32,16 +33,16 @@ public class ProductosServices {
 
     // obtener usuario por id rest api
     public ResponseEntity<Productos> getProductosById(Integer idProducto) {
-        Productos productos = (Productos) productosRepository.findByIdProductos(idProducto)
+        Productos productos = (Productos) productosRepository.findByIdProducto(idProducto)
                 .orElseThrow(() -> new ResourceNotFoundException("Producto no existe con esa id :" +
                         idProducto));
         return ResponseEntity.ok(productos);
     }
 
     // actualizar usuarios rest api
-    public ResponseEntity<Productos> updateProductos(int idProductos, Productos productos) {
-        Productos productos1 = (Productos) productosRepository.findByIdProductos(idProductos)
-                .orElseThrow(() -> new ResourceNotFoundException("Producto no existe con esa id :" + idProductos));
+    public ResponseEntity<Productos> updateProductos(int idProducto, Productos productos) {
+        Productos productos1 = (Productos) productosRepository.findByIdProducto(idProducto)
+                .orElseThrow(() -> new ResourceNotFoundException("Producto no existe con esa id :" + idProducto));
 
 
         productos.setIdProducto(productos1.getIdProducto());
@@ -61,7 +62,7 @@ public class ProductosServices {
 
     // borrar usuario rest api
     public ResponseEntity<Map<String, Boolean>> deleteProductos(int idProductos) {
-        Productos productos = (Productos) productosRepository.findByIdProductos(idProductos)
+        Productos productos = (Productos) productosRepository.findByIdProducto(idProductos)
                 .orElseThrow(() -> new ResourceNotFoundException("Producto no existe con esa id :" + idProductos));
 
         productosRepository.delete(productos);
@@ -70,7 +71,7 @@ public class ProductosServices {
         return ResponseEntity.ok(response);
     }
 
-    public ResponseEntity <List<Productos>> getIdProductoAndDescripcion(int idProductos , String descripcion) {
+    /*public ResponseEntity <List<Productos>> getIdProductoAndDescripcion(int idProductos , String descripcion) {
         List<Productos> productos = (List<Productos>) productosRepository.findByIdProductosAndDescripcion(idProductos, descripcion)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" +
                         idProductos));
