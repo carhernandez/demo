@@ -29,7 +29,6 @@ public class ProductosServices {
         return new ResponseEntity<>(productosRepository.save(productos),HttpStatus.OK) ;
     }
 
-    Usuarios usuario = new Usuarios();
 
     // obtener usuario por id rest api
     public ResponseEntity<Productos> getProductosById(Integer idProducto) {

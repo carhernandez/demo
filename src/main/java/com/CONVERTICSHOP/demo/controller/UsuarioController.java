@@ -18,7 +18,7 @@ public class UsuarioController {
     public String registro() {
         
 
-        return "registro";
+        return "/administrador/FormularioRegistro";
     }
 
     @DeleteMapping("/delete/{idUsuarios}")
