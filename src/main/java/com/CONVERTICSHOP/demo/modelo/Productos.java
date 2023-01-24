@@ -9,7 +9,7 @@ public class Productos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto;
     private String descripcion;
-    private Integer marca;
+    private String marca;
     @ManyToOne
     @JoinColumn(name = "id_color")
     private Color idColor;
@@ -19,8 +19,8 @@ public class Productos {
     @ManyToOne
     @JoinColumn(name = "id_talla")
     private Talla idTalla;
-    private String valor;
-    private String cantidad;
+    private Integer valor;
+    private Integer cantidad;
     /*@ManyToOne
     @JoinColumn(name = "usuario_id_usuario")
     private Usuarios usuarios;*/
@@ -28,8 +28,8 @@ public class Productos {
     public Productos() {
     }
 
-    public Productos(String descripcion, Integer marca, Color idColor, Genero idGenero, Talla idTalla,
-                     String valor, String cantidad, Usuarios usuarios) {
+    public Productos(String descripcion, String marca, Color idColor, Genero idGenero, Talla idTalla,
+                     Integer valor, Integer cantidad, Usuarios usuarios) {
         this.descripcion = descripcion;
         this.marca = marca;
         this.idColor = idColor;
@@ -56,11 +56,11 @@ public class Productos {
         this.descripcion = descripcion;
     }
 
-    public Integer getMarca() {
+    public String getMarca() {
         return marca;
     }
 
-    public void setMarca(Integer marca) {
+    public void setMarca(String marca) {
         this.marca = marca;
     }
 
@@ -88,19 +88,19 @@ public class Productos {
         this.idTalla = idTalla;
     }
 
-    public String getValor() {
+    public Integer getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Integer valor) {
         this.valor = valor;
     }
 
-    public String getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(String cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
