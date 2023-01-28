@@ -3,6 +3,7 @@ package com.CONVERTICSHOP.demo.controller;
 import com.CONVERTICSHOP.demo.modelo.Usuarios;
 import com.CONVERTICSHOP.demo.services.UsuariosServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class UsuarioController {
     public String registro() {
         
 
-        return "/administrador/FormularioRegistro";
+        return "/administrador/LOGIN";
     }
 
     @DeleteMapping("/delete/{idUsuarios}")
@@ -31,7 +32,7 @@ public class UsuarioController {
         return usuariosServices.getAllUsuarios();
     }
 
-    @PostMapping("/register")
+    @PostMapping(value = "/register", consumes = {"application/x-www-form-urlencoded","text/plain","multipart/form-data", "application/json" , "text/plain;charset=UTF-8"} )
     public ResponseEntity<Usuarios> createUsuarios(@RequestBody Usuarios usuarios) {
         return usuariosServices.createUsuarios(usuarios);
     }
