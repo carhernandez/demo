@@ -41,14 +41,14 @@ public class UsuariosServices {
     Usuarios usuarios = new Usuarios();
 
     // obtener todos los usuarios
-        public ResponseEntity<List<Usuarios>> getAllUsuarios() {
+    public ResponseEntity<List<Usuarios>> getAllUsuarios() {
         return new ResponseEntity<>(usuarioRepository.findAll(), HttpStatus.OK);
     }
 
     // crear usuario rest api
 
-    public ResponseEntity <Usuarios> createUsuarios(Usuarios usuarios) {
-        return new ResponseEntity<>(usuarioRepository.save(usuarios),HttpStatus.OK) ;
+    public ResponseEntity<Usuarios> createUsuarios(Usuarios usuarios) {
+        return new ResponseEntity<>(usuarioRepository.save(usuarios), HttpStatus.OK);
     }
 
     Usuarios usuario = new Usuarios();
@@ -89,18 +89,26 @@ public class UsuariosServices {
         return ResponseEntity.ok(response);
     }
 
-    public ResponseEntity <List<Usuarios>> getIdUsuarioAndPassword(int idUsuarios , String contrasena) {
+    public ResponseEntity<List<Usuarios>> getIdUsuarioAndPassword(int idUsuarios, String contrasena) {
         List<Usuarios> usuarios = usuarioRepository.findByIdUsuarioAndContrasena(idUsuarios, contrasena)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" +
                         idUsuarios));
         return ResponseEntity.ok(usuarios);
     }
 
-    public ResponseEntity <List<Usuarios>> getUsuarioOrNombres(int idUsuarios , String nombres) {
+    public ResponseEntity<List<Usuarios>> getUsuarioOrNombres(int idUsuarios, String nombres) {
         List<Usuarios> usuarios = usuarioRepository.findByIdUsuarioOrNombres(idUsuarios, nombres)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" +
                         idUsuarios));
         return ResponseEntity.ok(usuarios);
     }
+
+    public ResponseEntity<List<Usuarios>> getCorreoElectronicoAndPassword(String correoElectronico, String contrasena) {
+        List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findByCorreoElectronicoAndPassword(correoElectronico, contrasena)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa  :" +
+                        correoElectronico));
+        return ResponseEntity.ok(usuarios);
+    }
+
 }
 

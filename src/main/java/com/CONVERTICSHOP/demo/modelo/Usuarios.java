@@ -1,11 +1,13 @@
 package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
 @Table(name = "usuario")
+@Data
 public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +41,7 @@ public class Usuarios {
         this.contrasena = contrasena;
 
     }
+
 
     public Integer getIdUsuario() {
         return idUsuario;
