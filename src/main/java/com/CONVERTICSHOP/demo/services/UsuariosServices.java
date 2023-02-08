@@ -103,12 +103,13 @@ public class UsuariosServices {
         return ResponseEntity.ok(usuarios);
     }
 
-    public ResponseEntity<List<Usuarios>> getCorreoElectronicoAndPassword(String correoElectronico, String contrasena) {
-        List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findByCorreoElectronicoAndPassword(correoElectronico, contrasena)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa  :" +
+   /* public ResponseEntity<List<Usuarios>> getCorreoElectronicoAndContrasena(String correoElectronico, String contrasena) {
+        List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findByCorreoElectronicoAndContrasena(correoElectronico,
+                        contrasena)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con ese  :" +
                         correoElectronico));
         return ResponseEntity.ok(usuarios);
-    }
+    }*/
 
 }
 

@@ -36,7 +36,8 @@ public class UsuarioController {
         return usuariosServices.getAllUsuarios();
     }
 
-    @PostMapping(value = "/register", consumes = {"application/x-www-form-urlencoded", "text/plain", "multipart/form-data", "application/json", "text/plain;charset=UTF-8"})
+    @PostMapping(value = "/register", consumes = {"application/x-www-form-urlencoded",
+            "text/plain", "multipart/form-data", "application/json", "text/plain;charset=UTF-8"})
     public ResponseEntity<Usuarios> createUsuarios(@RequestBody Usuarios usuarios) {
         return usuariosServices.createUsuarios(usuarios);
     }
@@ -70,7 +71,7 @@ public class UsuarioController {
     private UsuariosServices usuariosServices;
 
 
-    public ModelAndView login() {
+    /*public ModelAndView login() {
         ModelAndView mav = new ModelAndView("login");
         mav.addObject("user", new Usuarios());
         return mav;
@@ -79,8 +80,8 @@ public class UsuarioController {
     @PostMapping("/login")
     public String login(@ModelAttribute("user") Usuarios user) {
 
-        ResponseEntity<List<Usuarios>> oauthUser = usuariosServices.getCorreoElectronicoAndPassword(user.getCorreoElectronico(), user.getContrasena());
-
+        ResponseEntity<List<Usuarios>> oauthUser = usuariosServices.getCorreoElectronicoAndContrasena(user.getCorreoElectronico(),
+                user.getContrasena());
 
         System.out.print(oauthUser);
         if (Objects.nonNull(oauthUser)) {
@@ -94,7 +95,7 @@ public class UsuarioController {
     public String logoutDo(HttpServletRequest request, HttpServletResponse response) {
         return "redirect:/login";
 
-    }
+    }*/
 }
 
 

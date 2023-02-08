@@ -2,23 +2,24 @@ package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.util.List;
 
 @Entity
 @Table(name = "usuario")
-@Data
 public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
-
     @Column(name = "correo_electronico")
     private String correoElectronico;
-
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "tipo_documento" )
     TipoDocumento tipoDocumento;
+    @Transient
+    private int numeroTipoDocumento;
     @Column(name = "n_documento")
     private Integer nDocumento;
     @Column(name = "nombres")
@@ -42,6 +43,13 @@ public class Usuarios {
 
     }
 
+    public int getNumeroTipoDocumento() {
+        return numeroTipoDocumento;
+    }
+
+    public void setNumeroTipoDocumento(int numeroTipoDocumento) {
+        this.numeroTipoDocumento = numeroTipoDocumento;
+    }
 
     public Integer getIdUsuario() {
         return idUsuario;
