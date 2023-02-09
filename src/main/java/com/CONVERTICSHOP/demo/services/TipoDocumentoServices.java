@@ -17,14 +17,14 @@ import java.util.Map;
 public class TipoDocumentoServices{
 
     @Autowired
-    private TipoDocumentoRepository tipoDocumentoRepository;
+    private static TipoDocumentoRepository tipoDocumentoRepository;
 
 
     Usuarios usuarios = new Usuarios();
 
     // obtener todos los usuarios
     public static ResponseEntity<List<TipoDocumento>> getAlltipoDocumento() {
-        return new ResponseEntity<>(tipoDocumentoRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity(tipoDocumentoRepository.findAll(), HttpStatus.OK);
     }
 
     // crear tipo de documento rest api

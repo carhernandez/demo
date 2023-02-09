@@ -103,6 +103,11 @@ public class UsuariosServices {
         return ResponseEntity.ok(usuarios);
     }
 
+    public ResponseEntity<List<Usuarios>> getCorreoElectronicoAndContrasena(String correoElectronico,
+                                                                            String contrasena) {
+        return null;
+    }
+
    /* public ResponseEntity<List<Usuarios>> getCorreoElectronicoAndContrasena(String correoElectronico, String contrasena) {
         List<Usuarios> usuarios = (List<Usuarios>) usuarioRepository.findByCorreoElectronicoAndContrasena(correoElectronico,
                         contrasena)
