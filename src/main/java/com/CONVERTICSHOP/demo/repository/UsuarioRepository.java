@@ -17,6 +17,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     Optional <List<Usuario>> findByIdUsuarioOrNombres(int idUsuario, String nombres );
 
+    Usuario delete(Integer idUsuario);
+
 
     /*Optional<Usuario>  findByCorreoElectronicoAndContrasena(String correoElectronico, String contrasena);*/
 }

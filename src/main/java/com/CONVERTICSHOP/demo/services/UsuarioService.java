@@ -10,5 +10,10 @@ public interface UsuarioService  {
 
     Usuario crearUsuario(Usuario usuario);
 
+    Usuario actualizarUsuario(Integer idUsuario);
+
+
+    Usuario borrarUsuario (Integer IdUsuario);
+
 
 }

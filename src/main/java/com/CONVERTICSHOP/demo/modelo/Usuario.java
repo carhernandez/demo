@@ -2,7 +2,6 @@ package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
 
-
 import java.util.List;
 
 @Entity
@@ -13,8 +12,8 @@ public class Usuario {
     private Integer idUsuario;
     @Column(name = "correo_electronico")
     private String correoElectronico;
-    @ManyToOne (targetEntity = TipoDocumento.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "tipo_documento", referencedColumnName ="id_tipo_documento" )
+    @ManyToOne(targetEntity = TipoDocumento.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo_documento", referencedColumnName = "id_tipo_documento")
     TipoDocumento tipoDocumento;
     @Column(name = "n_documento")
     private Integer nDocumento;
@@ -38,7 +37,6 @@ public class Usuario {
         this.contrasena = contrasena;
 
     }
-
 
 
     public Integer getIdUsuario() {

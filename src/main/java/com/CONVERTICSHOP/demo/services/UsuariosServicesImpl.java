@@ -4,18 +4,13 @@ import com.CONVERTICSHOP.demo.modelo.Usuario;
 import com.CONVERTICSHOP.demo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class UsuariosServicesImpl implements UsuarioService {
-
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -31,6 +26,46 @@ public class UsuariosServicesImpl implements UsuarioService {
     public Usuario crearUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
+
+    @Override
+    @Transactional
+    public Usuario actualizarUsuario(Integer idUsuario) {
+        Usuario usuario = usuarioRepository.findByIdUsuario(idUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" + idUsuario));
+        usuario.setCorreoElectronico(usuario.getCorreoElectronico());
+        usuario.setTipoDocumento(usuario.getTipoDocumento());
+        usuario.setnDocumento(usuario.getnDocumento());
+        usuario.setNombres(usuario.getNombres());
+        usuario.setApellidos(usuario.getApellidos());
+        usuario.setContrasena(usuario.getContrasena());
+
+        return usuarioRepository.save(usuario);  }
+
+    @Override
+    @Transactional
+    public Usuario borrarUsuario(Integer IdUsuario) {
+        Usuario usuario = usuarioRepository.findByIdUsuario(IdUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" + IdUsuario));
+        return usuarioRepository.delete(IdUsuario);
+    }
+
+/*
+    @Override
+    @Transactional
+    public Usuario borrarUsuario(Usuario usuario1) {
+        Usuario usuario = usuarioRepository.findByIdUsuario(idUsuarios)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" + idUsuarios));
+
+
+        usuario.setCorreoElectronico(usuario1.getCorreoElectronico());
+        *//*usuario.setTipoDocumento(usuario1.getTipoDocumento());*//*
+        usuario.setnDocumento(usuario1.getnDocumento());
+        usuario.setNombres(usuario1.getNombres());
+        usuario.setApellidos(usuario1.getApellidos());
+        usuario.setContrasena(usuario1.getContrasena());
+
+        return null;
+    }*/
 
     /*public List<Usuario> getUsuario() {
         return usuarioRepository.findAll();
@@ -52,6 +87,7 @@ public class UsuariosServicesImpl implements UsuarioService {
         String contrasena;*/
 
 
+/*
 
     // obtener todos los usuario
     public ResponseEntity<List<Usuario>> getAllUsuarios() {
@@ -80,7 +116,9 @@ public class UsuariosServicesImpl implements UsuarioService {
 
 
         usuario.setCorreoElectronico(usuario1.getCorreoElectronico());
-        /*usuario.setTipoDocumento(usuario1.getTipoDocumento());*/
+        */
+/*usuario.setTipoDocumento(usuario1.getTipoDocumento());*//*
+
         usuario.setnDocumento(usuario1.getnDocumento());
         usuario.setNombres(usuario1.getNombres());
         usuario.setApellidos(usuario1.getApellidos());
@@ -115,7 +153,8 @@ public class UsuariosServicesImpl implements UsuarioService {
         return ResponseEntity.ok(usuarios);
     }
 
-    /*public ResponseEntity<List<Usuario>> getCorreoElectronicoAndContrasena(String correoElectronico,
+    */
+/*public ResponseEntity<List<Usuario>> getCorreoElectronicoAndContrasena(String correoElectronico,
                                                                             String contrasena) {
         List<Usuario> usuario = (List<Usuario>) usuarioRepository.findByCorreoElectronicoAndContrasena(correoElectronico,
                         contrasena)
@@ -123,15 +162,18 @@ public class UsuariosServicesImpl implements UsuarioService {
                         correoElectronico));
         return ResponseEntity.ok(usuario);
 
-    }*/
+    }*//*
 
-   /* public ResponseEntity<List<Usuario>> getCorreoElectronicoAndContrasena(String correoElectronico, String contrasena) {
+
+   */
+/* public ResponseEntity<List<Usuario>> getCorreoElectronicoAndContrasena(String correoElectronico, String contrasena) {
         List<Usuario> usuario = (List<Usuario>) usuarioRepository.findByCorreoElectronicoAndContrasena(correoElectronico,
                         contrasena)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con ese  :" +
                         correoElectronico));
         return ResponseEntity.ok(usuario);
     }*/
+
 
 }
 
