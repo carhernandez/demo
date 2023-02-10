@@ -1,7 +1,6 @@
 package com.CONVERTICSHOP.demo.controller;
 
 import com.CONVERTICSHOP.demo.modelo.TipoDocumento;
-import com.CONVERTICSHOP.demo.modelo.Usuarios;
 import com.CONVERTICSHOP.demo.services.TipoDocumentoServices;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

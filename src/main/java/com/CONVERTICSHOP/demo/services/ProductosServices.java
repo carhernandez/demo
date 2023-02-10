@@ -1,7 +1,6 @@
 package com.CONVERTICSHOP.demo.services;
 
 import com.CONVERTICSHOP.demo.modelo.Productos;
-import com.CONVERTICSHOP.demo.modelo.Usuarios;
 import com.CONVERTICSHOP.demo.repository.ProductosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -18,7 +17,7 @@ public class ProductosServices {
     @Autowired
     private ProductosRepository productosRepository;
 
-    //obtener todos los usuarios
+    //obtener todos los usuario
     public ResponseEntity<List<Productos>> getAllProductos() {
         return new ResponseEntity<>(productosRepository.findAll(), HttpStatus.OK);
     }
@@ -71,23 +70,23 @@ public class ProductosServices {
 
     /*public ResponseEntity <List<Productos>> getIdProductoAndDescripcion(int idProductos , String descripcion) {
         List<Productos> productos = (List<Productos>) productosRepository.findByIdProductosAndDescripcion(idProductos, descripcion)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" +
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" +
                         idProductos));
         return ResponseEntity.ok(productos);
     }
 
     public ResponseEntity <List<Productos>> getIdProdcutoAndDescripcion(int idProductos , String descripcion) {
         List<Productos> productos = (List<Productos>) productosRepository.findByIdProductosAndDescripcion(idProductos, descripcion)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" +
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" +
                         idProductos));
         return ResponseEntity.ok(productos);
     }
 
-    /*public ResponseEntity <List<Usuarios>> getUsuarioOrNombres(int idUsuarios , String nombres) {
-        List<Usuarios> usuarios = productosRepository.findByIdUsuarioOrNombres(idUsuarios, nombres)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuarios no existe con esa id :" +
+    /*public ResponseEntity <List<Usuario>> getUsuarioOrNombres(int idUsuarios , String nombres) {
+        List<Usuario> usuario = productosRepository.findByIdUsuarioOrNombres(idUsuarios, nombres)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" +
                         idUsuarios));
-        return ResponseEntity.ok(usuarios);
+        return ResponseEntity.ok(usuario);
     }*/
 
 

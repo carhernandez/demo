@@ -1,7 +1,6 @@
 package com.CONVERTICSHOP.demo.controller;
 
 import com.CONVERTICSHOP.demo.modelo.Productos;
-import com.CONVERTICSHOP.demo.modelo.Usuarios;
 import com.CONVERTICSHOP.demo.services.ProductosServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,14 +48,14 @@ public class ProductosController {
 /*
     @GetMapping("/" +
             "")
-    public ResponseEntity<List<Usuarios>> getUsuarioAndPassword(@RequestParam int idProducto,
+    public ResponseEntity<List<Usuario>> getUsuarioAndPassword(@RequestParam int idProducto,
                                                                 @RequestParam String contrasena) {
         return usuariosServices.getIdUsuarioAndPassword(idProducto, contrasena);
 
     }
 
     @DeleteMapping("/searchidNom")
-    public ResponseEntity<List<Usuarios>> getUsuarioOrNombres(@RequestParam String idUsuarios,
+    public ResponseEntity<List<Usuario>> getUsuarioOrNombres(@RequestParam String idUsuarios,
                                                               @RequestParam String nombres) {
         return usuariosServices.getUsuarioOrNombres(Integer.parseInt(idUsuarios), nombres);
 

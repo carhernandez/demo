@@ -1,25 +1,21 @@
 package com.CONVERTICSHOP.demo.modelo;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import net.minidev.json.annotate.JsonIgnore;
+
 
 import java.util.List;
 
 @Entity
 @Table(name = "usuario")
-public class Usuarios {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
     @Column(name = "correo_electronico")
     private String correoElectronico;
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "tipo_documento" )
+    @ManyToOne (targetEntity = TipoDocumento.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo_documento", referencedColumnName ="id_tipo_documento" )
     TipoDocumento tipoDocumento;
-    @Transient
-    private int numeroTipoDocumento;
     @Column(name = "n_documento")
     private Integer nDocumento;
     @Column(name = "nombres")
@@ -29,11 +25,11 @@ public class Usuarios {
     @Column(name = "contrasena")
     private String contrasena;
 
-    public Usuarios() {
+    public Usuario() {
     }
 
-    public Usuarios(String correoElectronico, TipoDocumento tipoDocumento, Integer nDocumento,
-                    String nombres, String apellidos, String contrasena, List<Productos> productos) {
+    public Usuario(String correoElectronico, TipoDocumento tipoDocumento, Integer nDocumento,
+                   String nombres, String apellidos, String contrasena, List<Productos> productos) {
         this.correoElectronico = correoElectronico;
         this.tipoDocumento = tipoDocumento;
         this.nDocumento = nDocumento;
@@ -43,13 +39,7 @@ public class Usuarios {
 
     }
 
-    public int getNumeroTipoDocumento() {
-        return numeroTipoDocumento;
-    }
 
-    public void setNumeroTipoDocumento(int numeroTipoDocumento) {
-        this.numeroTipoDocumento = numeroTipoDocumento;
-    }
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -109,7 +99,7 @@ public class Usuarios {
 
     @Override
     public String toString() {
-        return "Usuarios{" +
+        return "Usuario{" +
                 "idUsuario=" + idUsuario +
                 ", correoElectronico='" + correoElectronico + '\'' +
                 ", tipoDocumento=" + tipoDocumento +

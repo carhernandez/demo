@@ -1,23 +1,22 @@
 package com.CONVERTICSHOP.demo.controller;
 
-import com.CONVERTICSHOP.demo.modelo.Usuarios;
-import com.CONVERTICSHOP.demo.services.UsuariosServices;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.CONVERTICSHOP.demo.modelo.Usuario;
+import com.CONVERTICSHOP.demo.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/usuarios")
 public class UsuarioController {
+    @Autowired
+    private UsuarioService usuariosServices;
+
 
     @GetMapping("")
     public String registro() {
@@ -26,61 +25,58 @@ public class UsuarioController {
         return "/administrador/LOGIN";
     }
 
-    @DeleteMapping("/delete/{idUsuarios}")
+  /*  @DeleteMapping("/delete/{idUsuarios}")
     public ResponseEntity<Map<String, Boolean>> deleteUsuario(@PathVariable Integer idUsuarios) {
         return usuariosServices.deleteUsuario(idUsuarios);
-    }
+    }*/
 
     @GetMapping("/all")
-    public ResponseEntity<List<Usuarios>> getAllUsuarios() {
-        return usuariosServices.getAllUsuarios();
+    public ResponseEntity<List<Usuario>> getAllUsuarios() {
+        return ResponseEntity.ok(usuariosServices.obtenerTodos());
     }
 
-    @PostMapping(value = "/register", consumes = {"application/x-www-form-urlencoded",
-            "text/plain", "multipart/form-data", "application/json", "text/plain;charset=UTF-8"})
-    public ResponseEntity<Usuarios> createUsuarios(@RequestBody Usuarios usuarios) {
-        return usuariosServices.createUsuarios(usuarios);
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Usuario> createUsuarios(@RequestBody Usuario usuario) {
+        return new ResponseEntity<>(usuariosServices.crearUsuario(usuario), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{idUsuarios}")
-    public ResponseEntity<Usuarios> getUsuariosById(@PathVariable Integer idUsuarios) {
+    /*@GetMapping("/{idUsuarios}")
+    public ResponseEntity<Usuario> getUsuariosById(@PathVariable Integer idUsuarios) {
         return usuariosServices.getUsuariosById(idUsuarios);
     }
 
     @PutMapping("/{idUsuarios}")
-    public ResponseEntity<Usuarios> updateUsuarios(@PathVariable Integer idUsuarios, @RequestBody Usuarios usuarios) {
+    public ResponseEntity<Usuario> updateUsuarios(@PathVariable Integer idUsuarios, @RequestBody Usuario usuarios) {
         return usuariosServices.updateUsuarios(idUsuarios, usuarios);
     }
 
     @GetMapping("/" +
             "")
-    public ResponseEntity<List<Usuarios>> getUsuarioAndPassword(@RequestParam int idUsuarios,
+    public ResponseEntity<List<Usuario>> getUsuarioAndPassword(@RequestParam int idUsuarios,
                                                                 @RequestParam String contrasena) {
         return usuariosServices.getIdUsuarioAndPassword(idUsuarios, contrasena);
 
     }
 
     @DeleteMapping("/searchidNom")
-    public ResponseEntity<List<Usuarios>> getUsuarioOrNombres(@RequestParam String idUsuarios,
+    public ResponseEntity<List<Usuario>> getUsuarioOrNombres(@RequestParam String idUsuarios,
                                                               @RequestParam String nombres) {
         return usuariosServices.getUsuarioOrNombres(Integer.parseInt(idUsuarios), nombres);
 
     }
 
-    @Autowired
-    private UsuariosServices usuariosServices;
 
 
-    public ModelAndView login() {
+    /*public ModelAndView login() {
         ModelAndView mav = new ModelAndView("login");
-        mav.addObject("user", new Usuarios());
+        mav.addObject("user", new Usuario());
         return mav;
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("user") Usuarios user) {
+    public String login(@ModelAttribute("user") Usuario user) {
 
-        ResponseEntity<List<Usuarios>> oauthUser = usuariosServices.getCorreoElectronicoAndContrasena
+        ResponseEntity<List<Usuario>> oauthUser = usuariosServices.getCorreoElectronicoAndContrasena
         (user.getCorreoElectronico(), user.getContrasena());
 
         System.out.print(oauthUser);
@@ -95,7 +91,7 @@ public class UsuarioController {
     public String logoutDo(HttpServletRequest request, HttpServletResponse response) {
         return "redirect:/login";
 
-    }
+    }*/
 }
 
 

@@ -23,13 +23,13 @@ public class Productos {
     private Integer cantidad;
     /*@ManyToOne
     @JoinColumn(name = "usuario_id_usuario")
-    private Usuarios usuarios;*/
+    private Usuario usuario;*/
 
     public Productos() {
     }
 
     public Productos(String descripcion, String marca, Color idColor, Genero idGenero, Talla idTalla,
-                     Integer valor, Integer cantidad, Usuarios usuarios) {
+                     Integer valor, Integer cantidad, Usuario usuario) {
         this.descripcion = descripcion;
         this.marca = marca;
         this.idColor = idColor;
@@ -37,7 +37,7 @@ public class Productos {
         this.idTalla = idTalla;
         this.valor = valor;
         this.cantidad = cantidad;
-        //this.usuarios = usuarios;
+        //this.usuario = usuario;
     }
 
     public Long getIdProducto() {
@@ -104,12 +104,12 @@ public class Productos {
         this.cantidad = cantidad;
     }
 
-    /*public Usuarios getUsuarios() {
-        return usuarios;
+    /*public Usuario getUsuarios() {
+        return usuario;
     }
 
-    public void setUsuarios(Usuarios usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuarios(Usuario usuario) {
+        this.usuario = usuario;
     }*/
 }
 
