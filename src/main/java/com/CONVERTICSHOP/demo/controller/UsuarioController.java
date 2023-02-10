@@ -1,7 +1,7 @@
 package com.CONVERTICSHOP.demo.controller;
 
 import com.CONVERTICSHOP.demo.modelo.Usuario;
-import com.CONVERTICSHOP.demo.services.UsuarioService;
+import com.CONVERTICSHOP.demo.services.UserService.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,19 +25,19 @@ public class UsuarioController {
         return "/administrador/LOGIN";
     }
 
-  /*  @DeleteMapping("/delete/{idUsuarios}")
-    public ResponseEntity<Map<String, Boolean>> deleteUsuario(@PathVariable Integer idUsuarios) {
-        return usuariosServices.deleteUsuario(idUsuarios);
-    }*/
-
     @GetMapping("/all")
-    public ResponseEntity<List<Usuario>> getAllUsuarios() {
+    public ResponseEntity<List<Usuario>> getAllUsuarios() throws Exception {
         return ResponseEntity.ok(usuariosServices.obtenerTodos());
     }
 
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Usuario> createUsuarios(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> createUsuarios(@RequestBody Usuario usuario) throws Exception {
         return new ResponseEntity<>(usuariosServices.crearUsuario(usuario), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete/{idUsuarios}")
+    public ResponseEntity<String>  borrarUsuario(@PathVariable Integer idUsuarios) {
+        return ResponseEntity.ok(usuariosServices.borrarUsuario(idUsuarios));
     }
 
     /*@GetMapping("/{idUsuarios}")

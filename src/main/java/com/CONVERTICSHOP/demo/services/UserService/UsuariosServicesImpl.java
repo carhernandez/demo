@@ -1,6 +1,7 @@
-package com.CONVERTICSHOP.demo.services;
+package com.CONVERTICSHOP.demo.services.UserService;
 
 import com.CONVERTICSHOP.demo.modelo.Usuario;
+import com.CONVERTICSHOP.demo.repository.TipoDocumentoRepository;
 import com.CONVERTICSHOP.demo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -15,22 +16,34 @@ public class UsuariosServicesImpl implements UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private TipoDocumentoRepository tipoDocumentoRepository;
+
     @Override
-    @Transactional (readOnly = true)
-    public List<Usuario> obtenerTodos() {
-        return usuarioRepository.findAll();
+    @Transactional(readOnly = true)
+    public List<Usuario> obtenerTodos() throws Exception {
+        try {
+            return usuarioRepository.findAll();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
     @Transactional
-    public Usuario crearUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public Usuario crearUsuario(Usuario usuario) throws Exception {
+        try {
+
+            return usuarioRepository.save(usuario);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
     @Transactional
     public Usuario actualizarUsuario(Integer idUsuario) {
-        Usuario usuario = usuarioRepository.findByIdUsuario(idUsuario)
+        Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" + idUsuario));
         usuario.setCorreoElectronico(usuario.getCorreoElectronico());
         usuario.setTipoDocumento(usuario.getTipoDocumento());
@@ -39,15 +52,25 @@ public class UsuariosServicesImpl implements UsuarioService {
         usuario.setApellidos(usuario.getApellidos());
         usuario.setContrasena(usuario.getContrasena());
 
-        return usuarioRepository.save(usuario);  }
+        return usuarioRepository.save(usuario);
+    }
 
     @Override
     @Transactional
-    public Usuario borrarUsuario(Integer IdUsuario) {
-        Usuario usuario = usuarioRepository.findByIdUsuario(IdUsuario)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" + IdUsuario));
-        return usuarioRepository.delete(IdUsuario);
+    public String borrarUsuario(Integer IdUsuario) {
+
+        usuarioRepository.findById(IdUsuario)
+        .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" + IdUsuario));
+        usuarioRepository.deleteById(IdUsuario);
+        return "se borro el usuario correctamente ";
     }
+
+    @Override
+    public Usuario obtenerUsuarioPorId(int idUsuario) {
+        return null;
+    }
+
+
 
 /*
     @Override
@@ -117,7 +140,7 @@ public class UsuariosServicesImpl implements UsuarioService {
 
         usuario.setCorreoElectronico(usuario1.getCorreoElectronico());
         */
-/*usuario.setTipoDocumento(usuario1.getTipoDocumento());*//*
+    /*usuario.setTipoDocumento(usuario1.getTipoDocumento());*//*
 
         usuario.setnDocumento(usuario1.getnDocumento());
         usuario.setNombres(usuario1.getNombres());
@@ -165,7 +188,7 @@ public class UsuariosServicesImpl implements UsuarioService {
     }*//*
 
 
-   */
+     */
 /* public ResponseEntity<List<Usuario>> getCorreoElectronicoAndContrasena(String correoElectronico, String contrasena) {
         List<Usuario> usuario = (List<Usuario>) usuarioRepository.findByCorreoElectronicoAndContrasena(correoElectronico,
                         contrasena)
