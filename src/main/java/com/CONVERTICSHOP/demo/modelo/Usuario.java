@@ -10,8 +10,8 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
-    @Column(name = "correo_electronico")
-    private String correoElectronico;
+    @Column(name = "correo")
+    private String correo;
     @ManyToOne(targetEntity = TipoDocumento.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "tipo_documento", referencedColumnName = "id_tipo_documento")
     TipoDocumento tipoDocumento;
@@ -27,9 +27,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String correoElectronico, TipoDocumento tipoDocumento, Integer nDocumento,
+    public Usuario(String correo, TipoDocumento tipoDocumento, Integer nDocumento,
                    String nombres, String apellidos, String contrasena, List<Productos> productos) {
-        this.correoElectronico = correoElectronico;
+        this.correo = correo;
         this.tipoDocumento = tipoDocumento;
         this.nDocumento = nDocumento;
         this.nombres = nombres;
@@ -47,12 +47,12 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public TipoDocumento getTipoDocumento() {
@@ -99,7 +99,7 @@ public class Usuario {
     public String toString() {
         return "Usuario{" +
                 "idUsuario=" + idUsuario +
-                ", correoElectronico='" + correoElectronico + '\'' +
+                ", correoElectronico='" + correo + '\'' +
                 ", tipoDocumento=" + tipoDocumento +
                 ", nDocumento=" + nDocumento +
                 ", nombres='" + nombres + '\'' +

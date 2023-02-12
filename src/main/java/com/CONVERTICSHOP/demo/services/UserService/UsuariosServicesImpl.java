@@ -34,6 +34,7 @@ public class UsuariosServicesImpl implements UsuarioService {
     public Usuario crearUsuario(Usuario usuario) throws Exception {
         try {
 
+
             return usuarioRepository.save(usuario);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -45,7 +46,7 @@ public class UsuariosServicesImpl implements UsuarioService {
     public Usuario actualizarUsuario(Integer idUsuario) {
         Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" + idUsuario));
-        usuario.setCorreoElectronico(usuario.getCorreoElectronico());
+        usuario.setCorreo(usuario.getCorreo());
         usuario.setTipoDocumento(usuario.getTipoDocumento());
         usuario.setnDocumento(usuario.getnDocumento());
         usuario.setNombres(usuario.getNombres());
@@ -57,18 +58,37 @@ public class UsuariosServicesImpl implements UsuarioService {
 
     @Override
     @Transactional
-    public String borrarUsuario(Integer IdUsuario) {
-
+    public String borrarUsuario(Integer IdUsuario) throws Exception {
+        try {
         usuarioRepository.findById(IdUsuario)
         .orElseThrow(() -> new ResourceNotFoundException("Usuario no existe con esa id :" + IdUsuario));
         usuarioRepository.deleteById(IdUsuario);
         return "se borro el usuario correctamente ";
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
     public Usuario obtenerUsuarioPorId(int idUsuario) {
         return null;
     }
+
+    @Override
+    public Boolean Login(String correoElectronico, String contrasena) throws Exception {
+        try{
+            Usuario usuario = usuarioRepository.findByCorreoAndContrasena(correoElectronico, contrasena);
+            return usuario!=null;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+
+    }
+
+
+
+
+
 
 
 

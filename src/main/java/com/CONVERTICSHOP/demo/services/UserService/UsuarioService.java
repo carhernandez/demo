@@ -14,9 +14,11 @@ public interface UsuarioService  {
     Usuario actualizarUsuario(Integer idUsuario);
 
 
-    String borrarUsuario (Integer IdUsuario);
+    String borrarUsuario (Integer IdUsuario) throws Exception;
 
     Usuario obtenerUsuarioPorId(int idUsuario);
+
+   Boolean Login (String correoElectronico, String contrasena) throws Exception;
 
 
 }
