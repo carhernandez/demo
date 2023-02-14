@@ -28,10 +28,10 @@ public class TipoDocumentoController {
         return new ResponseEntity<>(tipoDocumentoServices.crearTipoDocumento(tipoDocumento), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{idUsuarios}")
+    @DeleteMapping("/delete/{idTipoDocumento}")
     public ResponseEntity<String>  borrarTipoDocumento(@PathVariable Integer idTipoDocumento) throws Exception {
         return ResponseEntity.ok(tipoDocumentoServices.borrarTipoDocumento(idTipoDocumento));
-
+    }
 
 
 
