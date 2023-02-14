@@ -2,19 +2,16 @@ package com.CONVERTICSHOP.demo.controller;
 
 import com.CONVERTICSHOP.demo.modelo.Usuario;
 import com.CONVERTICSHOP.demo.services.UserService.UsuarioService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Objects;
 
+@CrossOrigin(origins = {"http://localhost:4200"})
 @Controller
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -40,16 +37,17 @@ public class UsuarioController {
     }
 
     @PostMapping("/login"  /*, consumes = MediaType.APPLICATION_JSON_VALUE*/)
-    public ResponseEntity<Usuario> Login(@RequestBody Usuario usuario) throws Exception {
+    public ResponseEntity<String> Login(@RequestBody Usuario usuario) throws Exception {
         Boolean Login = usuariosServices.Login(usuario.getCorreo(), usuario.getContrasena());
         if (Login) {
             System.out.println("usuario  logueado");
-            return ResponseEntity.status(HttpStatus.OK).body(usuario);
+            return ResponseEntity.status(HttpStatus.OK).body("{\"status\"Error:\"}");
         }else{
             System.out.println("usuario no logueado");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-
         }
+
+
 
 
         /*(usuariosServices.findByCorreoElectronicoAndContrasena(usuario.getCorreoElectronico(), usuario.getContrasena());*/
