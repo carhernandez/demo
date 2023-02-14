@@ -1,7 +1,7 @@
 package com.CONVERTICSHOP.demo.controller;
 
 import com.CONVERTICSHOP.demo.modelo.Productos;
-import com.CONVERTICSHOP.demo.services.ProductosServices;
+import com.CONVERTICSHOP.demo.services.ProductService.ProductosServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

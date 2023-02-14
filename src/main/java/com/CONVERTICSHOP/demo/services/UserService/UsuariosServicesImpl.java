@@ -33,7 +33,8 @@ public class UsuariosServicesImpl implements UsuarioService {
     @Transactional
     public Usuario crearUsuario(Usuario usuario) throws Exception {
         try {
-
+                usuario.setTipoDocumento
+                        (tipoDocumentoRepository.findById(usuario.getTipoDocumento().getIdTipoDocumento()).get());
 
             return usuarioRepository.save(usuario);
         } catch (Exception e) {

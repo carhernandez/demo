@@ -1,7 +1,6 @@
 package com.CONVERTICSHOP.demo.controller;
 
 import com.CONVERTICSHOP.demo.modelo.TipoDocumento;
-import com.CONVERTICSHOP.demo.modelo.Usuario;
 import com.CONVERTICSHOP.demo.services.TypeDocumentServices.TypeDocumentServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = {"http://localhost:4200"})
 @Controller
 @RequestMapping ("/tipodocumento")
 public class TipoDocumentoController {

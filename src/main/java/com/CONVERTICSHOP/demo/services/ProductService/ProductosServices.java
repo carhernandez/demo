@@ -1,4 +1,4 @@
-package com.CONVERTICSHOP.demo.services;
+package com.CONVERTICSHOP.demo.services.ProductService;
 
 import com.CONVERTICSHOP.demo.modelo.Productos;
 import com.CONVERTICSHOP.demo.repository.ProductosRepository;
