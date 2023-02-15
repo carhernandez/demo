@@ -16,7 +16,7 @@ public class Talla {
     private String talla;
 
     @OneToMany(mappedBy = "idTalla", fetch = FetchType.LAZY)
-    private List<Productos> productos;
+    private List<Producto> productos;
 
     public Talla() {
     }

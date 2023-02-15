@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "producto")
-public class Productos {
+public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducto;
@@ -25,11 +25,11 @@ public class Productos {
     @JoinColumn(name = "usuario_id_usuario")
     private Usuario usuario;*/
 
-    public Productos() {
+    public Producto() {
     }
 
-    public Productos(String descripcion, String marca, Color idColor, Genero idGenero, Talla idTalla,
-                     Integer valor, Integer cantidad, Usuario usuario) {
+    public Producto(String descripcion, String marca, Color idColor, Genero idGenero, Talla idTalla,
+                    Integer valor, Integer cantidad, Usuario usuario) {
         this.descripcion = descripcion;
         this.marca = marca;
         this.idColor = idColor;

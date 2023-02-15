@@ -16,7 +16,7 @@ public class Genero {
     @Column (name = "genero")
     private String genero;
     @OneToMany(mappedBy = "idGenero")
-    private List<Productos> productos;
+    private List<Producto> productos;
 
     public Genero() {
     }

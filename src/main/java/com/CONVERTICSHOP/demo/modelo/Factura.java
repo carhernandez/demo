@@ -18,7 +18,7 @@ public class Factura {
     Usuario usuario;
     @ManyToOne
     @JoinColumn(name = "id_producto")
-    Productos productos;
+    Producto producto;
     @Column(name = "cantidad_total")
     private Integer cantidadTotal;
     @Column(name = "iva")
@@ -29,10 +29,10 @@ public class Factura {
     public Factura() {
     }
 
-    public Factura(LocalDate fecha, Usuario usuario, Productos productos, Integer cantidadTotal, Float iva, Float total) {
+    public Factura(LocalDate fecha, Usuario usuario, Producto producto, Integer cantidadTotal, Float iva, Float total) {
         this.fecha = fecha;
         this.usuario = usuario;
-        this.productos = productos;
+        this.producto = producto;
         this.cantidadTotal = cantidadTotal;
         this.iva = iva;
         this.total = total;
@@ -63,12 +63,12 @@ public class Factura {
         this.usuario = usuario;
     }
 
-    public Productos getProductos() {
-        return productos;
+    public Producto getProductos() {
+        return producto;
     }
 
-    public void setProductos(Productos productos) {
-        this.productos = productos;
+    public void setProductos(Producto producto) {
+        this.producto = producto;
     }
 
     public Integer getCantidadTotal() {
@@ -101,7 +101,7 @@ public class Factura {
                 "idFactura=" + idFactura +
                 ", fecha=" + fecha +
                 ", usuario=" + usuario +
-                ", productos=" + productos +
+                ", producto=" + producto +
                 ", cantidadTotal=" + cantidadTotal +
                 ", iva=" + iva +
                 ", total=" + total +

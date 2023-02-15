@@ -1,4 +1,4 @@
 package com.CONVERTICSHOP.demo.services.SizeService;
 
-public class TallaServices {
+public class SizeServiceImpl {
 }

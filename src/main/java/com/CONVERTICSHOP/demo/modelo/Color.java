@@ -15,12 +15,12 @@ public class Color {
     private String color;
 
     @OneToMany(mappedBy = "idColor", fetch = FetchType.LAZY)
-    private List<Productos> productos;
+    private List<Producto> productos;
 
     public Color() {
     }
 
-    public Color(String color, List<Productos> productos) {
+    public Color(String color, List<Producto> productos) {
         this.color = color;
         this.productos = productos;
     }
@@ -41,11 +41,11 @@ public class Color {
         this.color = color;
     }
 
-    public List<Productos> getProductos() {
+    public List<Producto> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<Productos> productos) {
+    public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
 
@@ -54,7 +54,7 @@ public class Color {
         return "Color{" +
                 "idColor=" + idColor +
                 ", color='" + color + '\'' +
-                ", productos=" + productos +
+                ", producto=" + productos +
                 '}';
     }
 }

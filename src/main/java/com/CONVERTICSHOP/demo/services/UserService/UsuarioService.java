@@ -3,7 +3,7 @@ package com.CONVERTICSHOP.demo.services.UserService;
 import com.CONVERTICSHOP.demo.modelo.Usuario;
 
 import java.util.List;
-import java.util.Optional;
+
 
 public interface UsuarioService  {
 

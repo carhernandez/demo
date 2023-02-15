@@ -28,7 +28,7 @@ public class Usuario {
     }
 
     public Usuario(String correo, TipoDocumento tipoDocumento, Integer nDocumento,
-                   String nombres, String apellidos, String contrasena, List<Productos> productos) {
+                   String nombres, String apellidos, String contrasena, List<Producto> productos) {
         this.correo = correo;
         this.tipoDocumento = tipoDocumento;
         this.nDocumento = nDocumento;
